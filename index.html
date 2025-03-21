@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop Mangmee</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #count {
+            font-size: 2rem;
+            margin: 20px;
+        }
+        #popcat {
+            width: 100vw;
+            height: auto;
+            max-height: 100vh;
+            cursor: pointer;
+            transition: none; /* ป้องกันการหน่วงเวลา */
+        }
+    </style>
+</head>
+<body>
+    <h1 id="count">หาว: 0</h1>
+    <img id="popcat" src="Nm.png" alt="Pop Mangmee" onclick="pop()">
+    <audio id="popSound" src="pop.mp3"></audio>
+
+    <script>
+        let count = 0;
+        function pop() {
+            count++;
+            document.getElementById("count").innerText = "หาว: " + count;
+            
+            // เปลี่ยนรูป
+            let popcat = document.getElementById("popcat");
+            popcat.src = "Pop.png";
+
+            // เล่นเสียงซ้อนกันได้
+            let sound = document.getElementById("popSound");
+            sound.pause();
+            sound.currentTime = 0;
+            sound.play();
+
+            // เปลี่ยนกลับเป็นปิดปาก
+            setTimeout(() => {
+                popcat.src = "Nm.png";
+            }, 100);
+        }
+    </script>
+</body>
+</html>
